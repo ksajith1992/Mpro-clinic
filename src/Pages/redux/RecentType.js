@@ -1,0 +1,4 @@
+export const RecentTypes={
+    SET_RECENTAPP:'SET_RECENTAPP',
+    REMOVE_RECENTAPP:'REMOVE_RECENTAPP'
+}

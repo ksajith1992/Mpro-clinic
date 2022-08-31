@@ -1,0 +1,4 @@
+export const ReportTypes={
+    SET_REPORTAPP:'SET_REPORTAPP',
+    REMOVE_REPORTAPP:'REMOVE_REPORTAPP'
+}
