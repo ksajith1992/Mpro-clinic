@@ -303,7 +303,7 @@ function Home() {
                             <img src={img1} className='head-img'/>
                             <div className='two-img'>
                             <img src={img2} className='head-img2'/><img src={img3} className='head-img3'/>
-                            {/* <button type="button" class="btn btn-outline-secondary btn-sm head-img-btn"><FontAwesomeIcon icon="fa-solid fa-play" />&nbsp;&nbsp;Watch</button> */}
+                            <button type="button" className="btn btn-outline-secondary btn-sm head-img-btn"><FontAwesomeIcon icon="fa-solid fa-play" />&nbsp;&nbsp;Watch</button>
                             </div>
                         </div>
                     </div>

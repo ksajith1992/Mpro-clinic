@@ -24,11 +24,11 @@ function AboutTeam() {
       <Container>
         <Row>
           <Col xs={12} sm={3} lg={3}>
-            <div class="card">
-              <div class="imgBx">
+            <div className="director-card">
+              <div className="imgBx">
                 <img src={img_avatar} className="image" />
               </div>
-              <div class="details center">
+              <div className="details center">
                 <h3 className='center whit'>John Doe</h3>
                 <div className='footerIconTeam center m-5'>
                   <NavLink to={'/'} className="nav-link"><img className='img-fluid' src={fb} /></NavLink>
@@ -43,11 +43,11 @@ function AboutTeam() {
          
          
           <Col xs={12} sm={3} lg={3}>
-            <div class="card">
-              <div class="imgBx">
+            <div className="director-card">
+              <div className="imgBx">
                 <img src={img_avatar} className="image" />
               </div>
-              <div class="details center">
+              <div className="details center">
                 <h3 className='center whit'>John Doe</h3>
                 <div className='footerIconTeam center m-5'>
                   <NavLink to={'/'} className="nav-link"><img className='img-fluid' src={fb} /></NavLink>
@@ -61,11 +61,11 @@ function AboutTeam() {
           </Col>
 
           <Col xs={12} sm={3} lg={3}>
-            <div class="card">
-              <div class="imgBx">
+            <div className="director-card">
+              <div className="imgBx">
                 <img src={img_avatar} className="image" />
               </div>
-              <div class="details center">
+              <div className="details center">
                 <h3 className='center whit'>John Doe</h3>
                 <div className='footerIconTeam center m-5'>
                   <NavLink to={'/'} className="nav-link"><img className='img-fluid' src={fb} /></NavLink>
@@ -79,11 +79,11 @@ function AboutTeam() {
           </Col>
 
           <Col xs={12} sm={3} lg={3}>
-            <div class="card">
-              <div class="imgBx">
+            <div className="director-card">
+              <div className="imgBx">
                 <img src={img_avatar} className="image" />
               </div>
-              <div class="details center">
+              <div className="details center">
                 <h3 className='center whit'>John Doe</h3>
                 <div className='footerIconTeam moveto center m-5'>
                   <NavLink to={'/'} className="nav-link"><img className='img-fluid' src={fb} /></NavLink>

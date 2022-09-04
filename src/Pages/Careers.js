@@ -34,7 +34,7 @@ function Careers() {
         <div className='col-md-4' id='centr' style={{justifyContent:'center',display:'flex',alignItems:'center'}}>
           <div>
           <h1 className='career-head'>Literally it does not mean anything. It is a sequence of words without a sense</h1><br/>
-          <div class="upload-btn-wrapper">
+          <div className="upload-btn-wrapper">
             <button id="btnsc">Join Our Team</button>
             {/* <input type="file" name="myfile" /> */}
           </div>

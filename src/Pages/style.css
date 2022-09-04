@@ -422,7 +422,7 @@ position: relative;
 }
 
 .dropdown-div {
-  width: 50%;
+  width: 60%;
   height: 150px;
   background-color: #FFF;
   display: flex;
@@ -991,6 +991,8 @@ select {
   height: 50px;
   border-radius: 10px;
   padding: 10px;
+  border-color: #333333;
+  border-style: ridge;
 }
 .reportUl ul li:hover{
   color: blue !important;
@@ -1227,11 +1229,6 @@ hr {
   border: 0px !important;
 }
 
-*,
-::after,
-::before {
-  border: none !important;
-}
 
 .MuiOutlinedInput-adornedEnd {
   padding-right: 0px !important;
@@ -1364,28 +1361,28 @@ hr {
 
 
 
-.card {
+.director-card{
   width: 100%;
   height: 350px;
     overflow: hidden;
 }
-.card .imgBx,
-.card .details {
+.director-card .imgBx,
+.director-card .details {
   width: 100%;
   height: 100%;
   position: absolute;
   box-sizing: border-box;
   transition: .5s;
 }
-.card .imgBx {
+.director-card .imgBx {
   top: 0;
   left: 0;
 }
-.card:hover .imgBx {
+.director-card:hover .imgBx {
   top: 0;
   left: 0%;
 }
-.card .imgBx img {
+.director-card .imgBx img {
   width: 100%;
   height: 100%;
 
@@ -1397,19 +1394,21 @@ hr {
   font-family: 'Federo';
 
 }
-.card .details {
-  background: #d20000;
+.director-card .details {
+  
     top: 100%;
     bottom: 0%;
     opacity: .7;
-  left: 0%;
-  padding: 70px 30px;
+    left: 0%;
+    padding: 70px 30px;
+    background-color: transparent;
 }
-.card:hover .details {
+.director-card:hover .details {
+  background: #d20000;
   top: 0;
   left: 0%;
 }
-.card .details h2 {
+.director-card .details h2 {
   color: #fff;
   text-align: center;
   margin: 0;
@@ -1417,7 +1416,7 @@ hr {
   border-bottom: 2px solid #fff;
 
 }
-.card .details p {
+.director-card .details p {
   margin: 20px 0 0;
   color: #fff;
 }
