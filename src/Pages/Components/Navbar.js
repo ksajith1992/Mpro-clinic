@@ -29,7 +29,7 @@ function Navbar() {
           <NavLink to={'/'} className="nav-link navlink-text" style={NavlinkStyles}>Home</NavLink>
         </li>
         <li className="nav-item navlines">
-          <NavLink to={'/About-Us'} className="nav-link navlink-text" style={NavlinkStyles}>About Us</NavLink>
+          <NavLink to={'/AboutUs'} className="nav-link navlink-text" style={NavlinkStyles}>About Us</NavLink>
         </li>
         {/* <li className="nav-item navlines">
           <NavLink to={'/Our-Specialities'} className="nav-link navlink-text" style={NavlinkStyles}>Our Specialities</NavLink>

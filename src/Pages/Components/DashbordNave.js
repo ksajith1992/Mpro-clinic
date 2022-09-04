@@ -36,13 +36,13 @@ function DashbordNave() {
           <NavLink to={'/'} className="nav-link" style={NavlinkStyles}>Dashbord</NavLink>
         </li>
         <li className="nav-item navlines active">
-          <NavLink to={'/'} className="nav-link" style={NavlinkStyles}>Home</NavLink>
+          <NavLink to={'/Home'} className="nav-link" style={NavlinkStyles}>Home</NavLink>
         </li>
         <li className="nav-item navlines active">
-          <NavLink to={'/'} className="nav-link" style={NavlinkStyles}>About Us</NavLink>
+          <NavLink to={'/AboutUs'} className="nav-link" style={NavlinkStyles}>About Us</NavLink>
         </li>
         <li className="nav-item navlines active">
-          <NavLink to={'/'} className="nav-link" style={NavlinkStyles}>Careers</NavLink>
+          <NavLink to={'/Careers'} className="nav-link" style={NavlinkStyles}>Careers</NavLink>
         </li>
        
         <li className="nav-item navlines navlinestwo">

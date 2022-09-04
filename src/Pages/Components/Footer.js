@@ -36,11 +36,9 @@ function Footer() {
                         <div className='FootterUlli'>
                             <ul>
                                 <li>  <NavLink to={'/'} className="nav-link">Home</NavLink></li>
-                                <li> <NavLink to={'/'} className="nav-link">Book an appointment</NavLink></li>
-                                <li> <NavLink to={'/'} className="nav-link">Download lab report</NavLink></li>
-                                <li> <NavLink to={'/'} className="nav-link">Explore our specialities</NavLink></li>
-                                <li> <NavLink to={'/'} className="nav-link">AboutUs</NavLink></li>
-                                <li> <NavLink to={'/'} className="nav-link">Careers</NavLink></li>
+                                <li> <NavLink to={'/Login'} className="nav-link">Download lab report</NavLink></li>
+                                <li> <NavLink to={'/AboutUs'} className="nav-link">AboutUs</NavLink></li>
+                                <li> <NavLink to={'/Careers'} className="nav-link">Careers</NavLink></li>
                             </ul>
                         </div>
                     </Col>

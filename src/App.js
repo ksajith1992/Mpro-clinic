@@ -11,19 +11,20 @@ import Dashbord from './Pages/Dashbord';
 import Footer from './Pages/Components/Footer';
 import CareerDetails from './Pages/CareerDetails';
 import Otoverification from './Pages/Otoverification';
+import AboutClinic from './Pages/AboutClinic';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path='/' element={<Home/>}/>
+          <Route exact path='/' element={<AboutClinic/>}/>
           <Route exact path='/Home' element={<Home/>}/>
           <Route exact path='/Login' element={<Login/>}/>
-          <Route exact path='/OTP-Verification' element={<Otoverification/>}/>
-          <Route exact path='/Our-Specialities' element={<Specialities/>}/>
-          <Route exact path='/Health-Packages' element={<Packages/>}/>
-          <Route exact path='/About-Us' element={<Aboutus/>}/>
+          <Route exact path='/OTPVerification' element={<Otoverification/>}/>
+          <Route exact path='/OurSpecialities' element={<Specialities/>}/>
+          <Route exact path='/HealthPackages' element={<Packages/>}/>
+          <Route exact path='/AboutUs' element={<Aboutus/>}/>
           <Route exact path='/Careers' element={<Careers/>}/>
           <Route exact path='/CareerDetails' element={<CareerDetails/>}/>
           <Route exact path='/Dashbord' element={<Dashbord/>}/>
