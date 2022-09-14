@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Navbar from './Components/Navbar'
 import './style.css'
 import bgc from '../Assets/Images/career.png'
@@ -9,6 +9,7 @@ import 'react-tabs/style/react-tabs.css'
 import CareerTabs from './Components/CareerTabs'
 import ScrollableTabsButtonVisible from './Components/CareerTabs'
 import {useNavigate} from 'react-router-dom'
+import axios from '../Constants/Axios'
 
 function Careers() {
   const navigate = useNavigate();
@@ -23,9 +24,58 @@ function Careers() {
         this.classList.add('active');
       });
     });
-    const carrerDiscription=()=>{
-        navigate('/CareerDetails')
+    const carrerDiscription=(e)=>{
+      navigate('/CareerDetails',{state:{id:e.target.id}})
     }
+    const [value, setValue] = React.useState(1);
+    const [depart, setDepart] = useState([])
+    const [data, setData] = useState([])
+    const [careers, setCareers] = useState([])
+  
+    useEffect(()=>{        
+      axios.get('career_list/')
+      .then(res=>{
+        console.log(res.data.data)
+        const rows = res.data.data
+        var num = 1
+        const rowss = []
+        rows.forEach((el)=>{      
+          rowss.push(
+            {no:num, career_count: el['career_count'], description: el['description'], heading: el['heading'], id: el['id'] , vacancies:el['career_count'] }       
+          )
+          num = num+1;  
+        })
+        setDepart(rowss)
+          getcareers(res.data.data[0].id)    
+      })
+      .catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response) } });
+  },[])
+  const dats=[{ 'heading':'',
+  'id':'65555',
+  'responsibility':'Currently no openings, Come back later.',
+  'vacancy':'0',
+'skills':''}]
+  const getcareers=(er)=>{
+    console.log(er,'ll')
+    if(careers.length){   
+    }else{
+      axios.get('careers/'+er+'/')
+      .then(res=>{
+          setCareers(res.data.data)
+      })
+      .catch(err => { if(err.request){ console.log(err.request) } if(err.response){  setCareers(dats) } });
+      }
+    }
+
+  const handleChange = (e, newValue) => {
+    setValue(newValue);
+    axios.get('careers/'+e.target.id+'/')
+    .then(res=>{
+        setCareers(res.data.data)
+    })
+    .catch(err => { if(err.request){ console.log(err.request) } if(err.response){ setCareers(dats) } });
+  };
+  console.log(careers,'ooo')
   return (
     <div className='container-fluid m-0' id='container-fluid'>
       <Navbar/>
@@ -52,67 +102,23 @@ function Careers() {
           <div className='col-md-4 toplist'>
             <h1 className='dep-head'>DEAPRTMENTS</h1>
             <ul className='deplist'>
-              <li>All Departments[124]</li>
-              <li>Administration[2]</li>
-              <li>Business Development[3]</li>
-              <li>Community Support[5]</li>
-              <li>Data Science/Analytics[1]</li>
-              <li>Data Science[1]</li>
-              <li>Data Science[1]</li>
+              {depart.map((obj)=>
+              <li key={obj.id} onClick={handleChange} id={obj.id}>{obj.heading}[{obj.vacancies}]</li>
+              )}
             </ul>
           </div>
           
           <div className='col-md-4'>
             <h1 className='Actv-head'>ACTIVE OPENING</h1>
             <div className='scrollDiv' id='style-3'>
+              {careers.map((obj)=>
               <div className='job-opp'>
-                <h1 className='Desig-name'>Senior HR Manager</h1>
-                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" onClick={carrerDiscription}/><br/>
-                <p className='Desig-bio'>Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. </p>
-              </div>
-              <div className='job-opp'>
-                <h1 className='Desig-name'>Senior HR Manager</h1>
-                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" onClick={carrerDiscription}/><br/>
-                <p className='Desig-bio'>Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. </p>
-              </div>
-              <div className='job-opp'>
-                <h1 className='Desig-name'>Senior HR Manager</h1>
-                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" onClick={carrerDiscription}/><br/>
-                <p className='Desig-bio'>Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. </p>
-              </div>
-              <div className='job-opp'>
-                <h1 className='Desig-name'>Senior HR Manager</h1>
-                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" onClick={carrerDiscription}/><br/>
-                <p className='Desig-bio'>Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. </p>
-              </div>
-              <div className='job-opp'>
-                <h1 className='Desig-name'>Senior HR Manager</h1>
-                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" onClick={carrerDiscription}/><br/>
-                <p className='Desig-bio'>Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. </p>
-              </div>
-              <div className='job-opp'>
-                <h1 className='Desig-name'>Senior HR Manager</h1>
-                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" onClick={carrerDiscription}/><br/>
-                <p className='Desig-bio'>Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation that make up a text also known as filler text, fictitious, blind or placeholder
-                Literally it does not mean anything. </p>
-              </div>
+                <h1 className='Desig-name'>{obj.heading}-[{obj.vacancy}]</h1>
+                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" id={obj.id} onClick={carrerDiscription}/><br/>
+                <p className='Desig-bio'><span style={{fontWeight:'bold'}}>{obj.heading?'Resposibility:-':''}</span>{obj.responsibility}</p>
+                <p className='Desig-bio'><span style={{fontWeight:'bold'}}>{obj.heading?'Skills:-':''}</span>{obj.skills}</p>
+              </div>)}
+              
               <div className='col-md-2'></div>
             </div>
             </div>

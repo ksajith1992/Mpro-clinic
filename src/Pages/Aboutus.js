@@ -49,7 +49,7 @@ function Aboutus() {
 }
   return (
     <>
-    <div className='d-none d-lg-block'>
+    <div>
         <StyleRoot>
             <div className='About-bg '>
                 <NavbarHome />

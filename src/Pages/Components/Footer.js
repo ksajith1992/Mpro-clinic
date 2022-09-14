@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import footerLogo from '../../Assets/Images/logoFooter.png'
 import fb from '../../Assets/Images/fb.svg'
 import insta from '../../Assets/Images/insta.svg'
@@ -9,8 +9,55 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import '../Components/Components.css'
 import { NavLink } from 'react-router-dom'
+import axios from '../../Constants/Axios'
+import { useForm } from "react-hook-form"
+import Snackbar from '@mui/material/Snackbar'
+import Stack from '@mui/material/Stack'
+import MuiAlert from '@mui/material/Alert'
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
 function Footer() {
+    const {handleSubmit} = useForm()
+    const [open, setOpen] = useState(false);
+    const [alertmsg, setAlertmsg] = useState('');
+    const [msg, setMsg] = useState('');
+    const [data, setData] = useState({email:''});
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+      const formData = new FormData()
+    const onchange=(e)=>{
+        setData({...data,
+            [e.target.id]: e.target.value})
+    }
+    const onSubmitclick=()=>{
+        console.log(data,'kk')
+      axios({
+          method: 'post',
+          url: 'submit_newsletter/',
+          data:data,
+          headers: { "Content-Type": "application/json" }
+      })
+      .then(function (res) {
+          setAlertmsg('Subscribed')
+          setMsg('success')
+          setOpen(true)
+      })
+      .catch(err => { if(err.request){ console.log(err.request) } if(err.response)
+          { 
+              console.log(err.response)
+              setAlertmsg(err.response.data.message_list)
+              setMsg('error')
+              setOpen(true)
+              
+          } });
+    }
   return (
     <>
         <div className='footerBg pt-3'>
@@ -22,10 +69,10 @@ function Footer() {
                         </div>
                         <p className='footerIconP'>Padikkal, Chelari, Malappuram Kerala 673014</p>
                         <h1>
-                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={fb} /></NavLink>
-                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={insta} /></NavLink>
-                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={ind} /></NavLink>
-                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={tw} /></NavLink>
+                            <NavLink to={'/'} className="nav-link social-icon" ><img className='img-fluid' src={fb}  style={{padding:10}}/></NavLink>
+                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={insta}  style={{padding:10}}/></NavLink>
+                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={ind}  style={{padding:10}}/></NavLink>
+                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={tw}  style={{padding:10}}/></NavLink>
 
                         </h1>
                     </Col>
@@ -50,9 +97,9 @@ function Footer() {
                         <div className='footerIcon'>
                             {/* <SearchBox /> */}
                             <div className="search-container">
-                                <form>
-                                    <input className='news-letter-input' type="text" placeholder="Email" name="search"/>
-                                    <button type="submit" className='news-letter-button'><i className="fa fa-search"></i></button>
+                                <form onSubmit={handleSubmit(onSubmitclick)}>
+                                    <input className='news-letter-input' type="text" placeholder="Email" id='email' onChange={onchange}/>
+                                    <button type="submit" className='news-letter-button'><i className="fa fa-paper-plane"></i></button>
                                 </form>
                             </div>
                             {/* <SearchBox /> */}
@@ -68,11 +115,18 @@ function Footer() {
                     </Col>
                     <Col xs={12} sm={12} lg={12} className='right'>
                          <NavLink to={'/'} className="nav-link" style={{float:'left'}}>Company</NavLink>
-                        <NavLink to={'/'} className="nav-link" style={{float:'left'}}>Setting & Privacy</NavLink>
+                        <NavLink to={'/PrivacyPolicy'} className="nav-link" style={{float:'left'}}>Setting & Privacy</NavLink>
                     </Col>
                 </Row>
             </Container>
         </div>
+        <Stack spacing={2} sx={{ width: '100%' }}>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+               <Alert onClose={handleClose} severity={msg} sx={{ width: '100%' }}>
+               {alertmsg}
+               </Alert>
+          </Snackbar>
+     </Stack>          
     </>
   )
 }

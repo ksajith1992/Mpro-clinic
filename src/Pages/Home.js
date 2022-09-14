@@ -27,6 +27,8 @@ import img2 from '../Assets/Images/img2.png'
 import img3 from '../Assets/Images/img3.gif'
 import smimg from '../Assets/Images/msimg4.png'
 import vision from '../Assets/Images/vision.png'
+import ReactDOM from 'react-dom'
+import ModalVideo from 'react-modal-video'
 import Navbar from './Components/Navbar'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
@@ -35,6 +37,8 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Footer from './Components/Footer'
 import axios from '../Constants/Axios'
+import { IoCloseOutline } from "react-icons/io5";
+import { BiLoaderAlt } from "react-icons/bi";
 import { useForm } from "react-hook-form"
 import Snackbar from '@mui/material/Snackbar'
 import Stack from '@mui/material/Stack'
@@ -45,6 +49,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 function Home() {
     const {handleSubmit} = useForm()
+    const [isOpen, setIsopen] = useState(false)
     const styles = {
         fadeInUp: {
             animation: 'x 3s',
@@ -141,6 +146,16 @@ function Home() {
             } });;
         }
     }
+    const [modal, setModal] = useState(false);
+    const [videoLoading, setVideoLoading] = useState(true);
+  
+    const openModal = () => {
+      setModal(!modal);
+    };
+  
+    const spinner = () => {
+      setVideoLoading(!videoLoading);
+    };
     
     return (
         <>
@@ -205,7 +220,7 @@ function Home() {
                                 <img src={Vector5}/>
                                 <h5 className="card-title">General medicine</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation...</h6>
-                                <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink>
+                                {/* <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink> */}
                             </div>
                         </div>
                         <div className="card spec-card">
@@ -213,7 +228,7 @@ function Home() {
                                 <img src={Vector6}/>
                                 <h5 className="card-title">Casualty</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation...</h6>
-                                <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink>
+                                {/* <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink> */}
                             </div>
                         </div>
                         <div className="card spec-card">
@@ -221,7 +236,7 @@ function Home() {
                                 <img src={Vector7}/>
                                 <h5 className="card-title">Neuro (Surgen)</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation...</h6>
-                                <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink>
+                                {/* <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink> */}
                             </div>
                         </div>
                         <div className="card spec-card">
@@ -229,7 +244,7 @@ function Home() {
                                 <img src={Vector8}/>
                                 <h5 className="card-title">Urology( surgen)</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation...</h6>
-                                <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink>
+                                {/* <NavLink className='card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3}/></NavLink> */}
                             </div>
                         </div>
                     </div>
@@ -284,7 +299,7 @@ function Home() {
                     <div className="card doc-card mt-2" style={{textAlign:'center',backgroundColor:'black'}}>
                         <div className="card-body" style={{textAlign:'center',marginTop:'30px'}}>
                         <h1 style={{color:'white',fontFamily:'Federo',fontSize:'23px',   textAlign: 'left'}}>General<br/>OP Bokking</h1>
-                        <h1 style={{color:'white',fontFamily:'Federo',fontSize:'23px',   textAlign: 'right'}}><img src={Arrow3} style={{marginTop:'-35%'}}/></h1>
+                        <h1 style={{color:'white',fontFamily:'Federo',fontSize:'23px',   textAlign: 'right'}}><img src={Arrow3} style={{marginTop:'-35%'}} data-bs-toggle="modal" data-bs-target="#exampleModal"/></h1>
                             
                         </div>
                     </div>
@@ -302,8 +317,46 @@ function Home() {
                         <div className='md-div-vid'>
                             <img src={img1} className='head-img'/>
                             <div className='two-img'>
-                            <img src={img2} className='head-img2'/><img src={img3} className='head-img3'/>
-                            <button type="button" className="btn btn-outline-secondary btn-sm head-img-btn"><FontAwesomeIcon icon="fa-solid fa-play" />&nbsp;&nbsp;Watch</button>
+                                <img src={img2} className='head-img2'/><img src={img3} className='head-img3'/>
+                                {/* <button className="btn btn-outline-secondary btn-sm head-img-btn"><FontAwesomeIcon icon="fa-solid fa-play" />&nbsp;&nbsp;Watch</button> */}
+                                <button onClick={openModal} className="btn btn-outline-secondary btn-sm head-img-btn"><FontAwesomeIcon icon="fa-solid fa-play" />
+                                        Watch!
+                                    {modal ? (
+                                    <section className="modal__bg">
+                                        <div className="modal__align">
+                                        <div className="modal__content" modal={modal}>
+                                            <IoCloseOutline
+                                            className="modal__close"
+                                            arial-label="Close modal"
+                                            onClick={setModal}
+                                            />
+                                            <div className="modal__video-align">
+                                            {videoLoading ? (
+                                                <div className="modal__spinner">
+                                                <BiLoaderAlt
+                                                    className="modal__spinner-style"
+                                                    fadeIn="none"
+                                                />
+                                                </div>
+                                            ) : null}
+                                            <iframe
+                                                className="modal__video-style"
+                                                onLoad={spinner}
+                                                loading="lazy"
+                                                width="800"
+                                                height="500"
+                                                src="https://www.youtube.com/embed/4UZrsTqkcW4"
+                                                title="YouTube video player"
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen
+                                            ></iframe>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </section>
+                                    ) : null}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -378,7 +431,7 @@ function Home() {
                                     <div className="card sm-bg-card">
                                         <div className="card-body hover-zoom">
                                             <img src={Vector5} style={{width:'30px'}}/>
-                                            <h5 className="sm-card-title">Casualty</h5>
+                                            <h5 className="sm-card-title">General medicine</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation...</h6>
                                             <NavLink className='sm-card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3} style={{width:'30px',marginTop:'10px',marginLeft:'10px'}}/></NavLink>
                                         </div>
@@ -394,9 +447,9 @@ function Home() {
                                     <div className="card sm-bg-card">
                                         <div className="card-body hover-zoom">
                                             <img src={Vector7} style={{width:'30px'}}/>
-                                            <h5 className="sm-card-title">Casualty</h5>
+                                            <h5 className="sm-card-title">Neuro (Surgen)</h5>
                                             <h6 className="sm-card-subtitle mb-2 text-muted">Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation...</h6>
-                                            <NavLink className='sm-card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3} style={{width:'30px',marginTop:'10px',marginLeft:'10px'}}/></NavLink>
+                                            <NavLink className='sm-card-link' to={'/'} data-bs-toggle="modal" data-bs-target="#exampleModal">Know more&nbsp;&nbsp;&nbsp;&nbsp;<img data-bs-toggle="modal" data-bs-target="#exampleModal" src={Arrow3} style={{width:'30px',marginTop:'10px',marginLeft:'10px'}}/></NavLink>
                                         </div>
                                     </div>    
                                     <div className="card sm-bg-card">
@@ -404,7 +457,7 @@ function Home() {
                                             <img src={Vector8} style={{width:'30px'}}/>
                                             <h5 className="sm-card-title">Casualty</h5>
                                             <h6 className="card-subtitle mb-2 text-muted">Literally it does not mean anything. It is a sequence of words without a sense of Latin derivation...</h6>
-                                            <NavLink className='sm-card-link' to={'/'}>Know more&nbsp;&nbsp;&nbsp;&nbsp;<img src={Arrow3} style={{width:'30px',marginTop:'10px',marginLeft:'10px'}}/></NavLink>
+                                            <NavLink className='sm-card-link' to={'/'} data-bs-toggle="modal" data-bs-target="#exampleModal">Know more&nbsp;&nbsp;&nbsp;&nbsp;<img data-bs-toggle="modal" data-bs-target="#exampleModal" src={Arrow3} style={{width:'30px',marginTop:'10px',marginLeft:'10px'}}/></NavLink>
                                         </div>
                                     </div>                                      
                                 </Carousel>
@@ -418,7 +471,44 @@ function Home() {
                         <img src={img1} className='sm-head-img'/>
                         <div className='sm-two-img'>
                             <img src={img2} className='sm-head-img2'/><img src={img3} className='sm-head-img3'/>
-                            <button type="button" className="btn btn-outline-secondary btn-sm sm-head-img-btn"><FontAwesomeIcon icon="fa-solid fa-play" />&nbsp;&nbsp;Watch</button>
+                            <button onClick={openModal} className="btn btn-outline-secondary btn-sm head-img-btn"><FontAwesomeIcon icon="fa-solid fa-play" />
+                                        Watch!
+                                    {modal ? (
+                                    <section className="modal__bg">
+                                        <div className="modal__align">
+                                        <div className="modal__content" modal={modal}>
+                                            <IoCloseOutline
+                                            className="modal__close"
+                                            arial-label="Close modal"
+                                            onClick={setModal}
+                                            />
+                                            <div className="modal__video-align">
+                                            {videoLoading ? (
+                                                <div className="modal__spinner">
+                                                <BiLoaderAlt
+                                                    className="modal__spinner-style"
+                                                    fadeIn="none"
+                                                />
+                                                </div>
+                                            ) : null}
+                                            <iframe
+                                                className="modal__video-style"
+                                                onLoad={spinner}
+                                                loading="lazy"
+                                                width="800"
+                                                height="500"
+                                                src="https://www.youtube.com/embed/4UZrsTqkcW4"
+                                                title="YouTube video player"
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowfullscreen
+                                            ></iframe>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </section>
+                                    ) : null}
+                                </button>
                         </div>
                         <div className='sm-md-wrds'>
                             <h1 className='sm-md'>DAVID CARMAL ALEX</h1>
@@ -467,12 +557,12 @@ function Home() {
                                     </button>
                                 </div>
                                 <Stack spacing={2} sx={{ width: '100%' }}>
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-               <Alert onClose={handleClose} severity={msg} sx={{ width: '100%' }}>
-               {alertmsg}
-               </Alert>
-          </Snackbar>
-     </Stack>          
+                                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                                    <Alert onClose={handleClose} severity={msg} sx={{ width: '100%' }}>
+                                    {alertmsg}
+                                    </Alert>
+                                </Snackbar>
+                            </Stack>          
                             </form>
                         </div>
                     </div>

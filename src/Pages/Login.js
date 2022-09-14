@@ -63,7 +63,7 @@ function Login() {
       setAlertmsg(res.data.message)
       setMsg('success')
       setOpen(true)
-      navigate('/OTP-Verification')
+      navigate('/OTPVerification')
   })
   .catch(err => { if(err.request){ console.log(err.request) } if(err.response)
   { 
