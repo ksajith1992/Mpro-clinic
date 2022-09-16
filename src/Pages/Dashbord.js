@@ -103,21 +103,6 @@ function Dashbord() {
                 <DashbordNave/>
             </div>
             <div className='serchboxMainDiv container'>
-                {/* <div className='serchboxDiv row'>
-                    <div className='col-lg-3'></div>
-                    <div className="col-lg-6">
-                    <div className="input-group mb-3" id='dep-div'> 
-                        <button className="btn btn-outline-secondary dropdown-toggle" id='dep-drop' type="button" data-bs-toggle="dropdown" aria-expanded="false">Department</button>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="#">Action</a></li>
-                            <li><a className="dropdown-item" href="#">Another action</a></li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                        <input type="text" className="form-control" id='dep-inp' placeholder='Search Your Doctors Here...'/>
-                    </div>
-                    </div>
-                    <div className='col-lg-3'></div>
-                </div> */}
                 <div className='serchboxDiv'>
                     <div className='recent-app p-4'>Recent appointments </div>
                         <Carousel responsive={responsive} showThumbs={false}>
@@ -137,20 +122,16 @@ function Dashbord() {
                             </div>)}
                         </Carousel>
                     </div>
-                {/* <div className='serchboxDiv'>
-                <div>LabReportsPdf</div>
-                </div> */}
-                <div className='serchboxDiv reportUl'>
+                <div  style={{margin:50}}>
                     <h4 className='reportUl-head'>Recent lab report</h4>
                     <ul>
                         {(report.length?report:reps).map((obj)=>
-                            <li id='labreport' onClick={()=>window.open(obj.report_file)}> Blood test {obj.updated_at}</li>
+                            <li id='labreport' onClick={()=>window.open(obj.report_file)}> {obj.updated_at}</li>
                             )}
                     </ul>
-                    {/* <button className="btn btn-outline-danger" type="button">View more</button> */}
                 </div>
             </div>  
-            <Footer/>          
+                
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -179,8 +160,8 @@ function Dashbord() {
                     </div>
                 </div>
             </div>
-          
-
+          <Footer/>
+                            
         </>
     )
 }

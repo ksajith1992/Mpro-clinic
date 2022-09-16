@@ -56,11 +56,15 @@ function CareerDetails() {
 	};
   let location = useLocation();
   const id=location.state.id;
-  useEffect(()=>{      
+  console.log('id',id)
+  useEffect(()=>{  
+    if(location.state.id){
+
+    }    
     axios.get('career_list/'+id+'/')
     .then(res=>{
       console.log(res.data.data,'kk');
-        setCareers(res.data.data)
+        setCareers([res.data.data])
     })
     .catch(err => { if(err.request){ console.log(err.request) } if(err.response){ console.log(err.response)} });
   },[])
@@ -111,7 +115,6 @@ const [state, setstate] = useState([])
         headers: { "Content-Type": "application/json" }
     })
     .then(res=>{
-      localStorage.setItem('token',res.data.data.access_token)
       setAlertmsg(res.data.message)
       setMsg('success')
       setOpen(true)
@@ -125,6 +128,7 @@ const [state, setstate] = useState([])
   } });
 
   }
+  console.log(careers[0],'kkll')
   return (
     <>
     <div>
@@ -142,11 +146,13 @@ const [state, setstate] = useState([])
 				</Tabs>
 			</Box>
 			<TabPanel value={value} index={0}>
+      {careers.map((obj)=>
+        <div key={obj.id}>
 				<div className='tabText'>
 
 					<h2>Job brief</h2>
 					<p>
-						{careers.description}
+						{obj.description}
 					</p>
 				</div>
 
@@ -154,7 +160,7 @@ const [state, setstate] = useState([])
 
 					<h2>Responsibilities</h2>
 					<p>
-						{careers.responsibility}
+						{obj.responsibility}
 					</p>
 				</div>
 
@@ -162,7 +168,7 @@ const [state, setstate] = useState([])
 
 					<h2>Requirements and skills</h2>
 					<p>
-						{careers.skills}
+						{obj.skills}
 					</p>
 					{/* <div className='mt-5'>
 						<button className="btn btn-danger" type="button">Apply now</button>
@@ -172,10 +178,11 @@ const [state, setstate] = useState([])
 
 					<h2>Vacancy</h2>
 					<p>
-						{careers.vacancy}
+						{obj.vacancy}
 					</p>
 				</div>
-
+        </div>
+      )}
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 

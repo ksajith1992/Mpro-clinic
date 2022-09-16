@@ -156,6 +156,24 @@ function Home() {
     const spinner = () => {
       setVideoLoading(!videoLoading);
     };
+    const moveinsta=()=>{
+        window.open('https://www.instagram.com/maverix.pro/?hl=en')
+    }
+    const movefacebook=()=>{
+        window.open('https://www.facebook.com/Maverixpro/')
+    }
+    const dmoveinsta=()=>{
+        window.open('https://www.instagram.com/davidcarmel_alex/?hl=en')
+    }
+    const dmovefacebook=()=>{
+        window.open('https://www.facebook.com/profile.php?id=100017075779319')
+    }
+    const dmovelinkedin=()=>{
+        window.open('https://www.linkedin.com/in/david-carmel-alex-a951841aa')
+    }
+    const dmovetwitter=()=>{
+        window.open('https://twitter.com/maverixprol?s=11&t=8FtMmePN1OVTbE5Ty1jAxQ')
+    }
     
     return (
         <>
@@ -165,10 +183,10 @@ function Home() {
                     <NavbarHome />
                     <div className='center-head-main'>
                         <div className='head-main-sub'>
-                            <h1 className='head-main' style={styles.fadeInUp}>Literally it does not aa</h1><br />
+                            <h1 className='head-main' style={styles.fadeInUp}>MAKING HEALTH CARE BETTER</h1><br />
                             <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                                 <button type="button" className="btn btn-danger">For emergency</button>
-                                <a href='tel:+918848654311' className="btn btn-outline-danger" style={{ color: 'white' }} type="button"><FontAwesomeIcon icon="fa-solid fa-phone-volume" />&nbsp;&nbsp;+91 7907978721&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                <a href='tel:+918848654311' className="btn btn-outline-danger" style={{ color: 'white' }} type="button"><FontAwesomeIcon style={{ color: 'white' }} icon="fa-solid fa-phone-volume" />&nbsp;&nbsp;<span style={{ color: 'white' }}>+91 7907978721</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                             </div>
                         </div>
                         <div className='right-align-div'>
@@ -177,10 +195,10 @@ function Home() {
                                     <NavLink to={'/'} className="navtext"><img src={Vector1} /><span>MY ACCOUNT</span></NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/'} className="navtext"><img src={Vector2} /><span>FACEBOOK</span></NavLink>
+                                    <NavLink to={''} onClick={movefacebook} className="navtext"><img src={Vector2} /><span>FACEBOOK</span></NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to={'/'} className="navtext"><img src={Vector3} /><span>INSTAGRAM</span></NavLink>
+                                    <NavLink to={''} onClick={moveinsta} className="navtext"><img src={Vector3} /><span>INSTAGRAM</span></NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -310,7 +328,7 @@ function Home() {
                         <div className='md-div'>
                             <h1 className='md-h1'>DAVID CARMAL ALEX </h1>
                             <h3 className='md-h3'>“Literally it does not mean anything. It is a sequence of words without a sense “</h3>
-                            <h1><img src={Vector9} style={{padding:'10px'}}/><img src={Vector10} style={{padding:'10px'}}/><img src={Vector11} style={{padding:'10px'}}/><img src={Vector12} style={{padding:'10px'}}/></h1>
+                            <h1><img onClick={dmovefacebook} src={Vector9} style={{padding:'10px'}}/><img onClick={dmoveinsta} src={Vector10} style={{padding:'10px'}}/><img onClick={dmovelinkedin} src={Vector11} style={{padding:'10px'}}/><img onClick={dmovetwitter} src={Vector12} style={{padding:'10px'}}/></h1>
                         </div>
                     </div>
                     <div className='col-6 md-video'>

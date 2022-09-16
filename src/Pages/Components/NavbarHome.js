@@ -40,7 +40,7 @@ function NavbarHome() {
         </ul>
         <span className="navbar-text">
               <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" style={{color:'white'}}>BOOK AN APPOINMENT</button>
-              <a href='tel:+918848654311' className="btn btn-outline-danger" style={{ color: 'white' }} type="button"><FontAwesomeIcon icon="fa-solid fa-phone-volume" />&nbsp;&nbsp;+91 7907978721&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+              <a href='tel:+918848654311' className="btn btn-outline-danger" style={{ color: 'white' }} type="button"><FontAwesomeIcon style={{ color: 'white' }} icon="fa-solid fa-phone-volume" />&nbsp;&nbsp;<span style={{ color: 'white' }}>+91 7907978721</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
         </span>
       </div>
     </div>

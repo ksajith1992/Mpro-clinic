@@ -41,6 +41,9 @@ import AboutGetKnow from './AboutGetKnow'
 import AboutGallery from './AboutGallery'
 
 function Aboutus() {
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    },[])
   const styles = {
     fadeInUp: {
         animation: 'x 3s',

@@ -37,7 +37,6 @@ function Footer() {
             [e.target.id]: e.target.value})
     }
     const onSubmitclick=()=>{
-        console.log(data,'kk')
       axios({
           method: 'post',
           url: 'submit_newsletter/',
@@ -45,9 +44,11 @@ function Footer() {
           headers: { "Content-Type": "application/json" }
       })
       .then(function (res) {
-          setAlertmsg('Subscribed')
-          setMsg('success')
-          setOpen(true)
+            document.getElementById('email').value=''
+            setAlertmsg('Subscribed')
+            setMsg('success')
+            setOpen(true)
+          
       })
       .catch(err => { if(err.request){ console.log(err.request) } if(err.response)
           { 
@@ -57,6 +58,21 @@ function Footer() {
               setOpen(true)
               
           } });
+    }
+    const movecompany=()=>{
+        window.open('https://www.maverixpro.com/')
+    }
+    const moveinsta=()=>{
+        window.open('https://www.instagram.com/maverix.pro/?hl=en')
+    }
+    const movefacebook=()=>{
+        window.open('https://www.facebook.com/Maverixpro/')
+    }
+    const movelinkedin=()=>{
+        window.open('https://www.linkedin.com/company/maverixpro/mycompany/')
+    }
+    const movetwitter=()=>{
+        window.open('https://twitter.com/maverixprol?s=11&t=8FtMmePN1OVTbE5Ty1jAxQ')
     }
   return (
     <>
@@ -69,10 +85,10 @@ function Footer() {
                         </div>
                         <p className='footerIconP'>Padikkal, Chelari, Malappuram Kerala 673014</p>
                         <h1>
-                            <NavLink to={'/'} className="nav-link social-icon" ><img className='img-fluid' src={fb}  style={{padding:10}}/></NavLink>
-                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={insta}  style={{padding:10}}/></NavLink>
-                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={ind}  style={{padding:10}}/></NavLink>
-                            <NavLink to={'/'} className="nav-link social-icon"><img className='img-fluid' src={tw}  style={{padding:10}}/></NavLink>
+                            <NavLink to={''} onClick={movefacebook} className="nav-link social-icon" ><img className='img-fluid' src={fb}  style={{padding:10}}/></NavLink>
+                            <NavLink to={''} onClick={moveinsta} className="nav-link social-icon"><img className='img-fluid' src={insta}  style={{padding:10}}/></NavLink>
+                            <NavLink to={''} onClick={movelinkedin} className="nav-link social-icon"><img className='img-fluid' src={ind}  style={{padding:10}}/></NavLink>
+                            <NavLink to={''} onClick={movetwitter} className="nav-link social-icon"><img className='img-fluid' src={tw}  style={{padding:10}}/></NavLink>
 
                         </h1>
                     </Col>
@@ -93,16 +109,17 @@ function Footer() {
                         <div className='logoFooterimg'>
                             <h3>Subscribe Our<br /> Newsletter</h3>
                         </div>
-                        <p className='footerIconP'>Natus errorsit voluptatem accusa dolore mque quae abillo inventore verita achitec beatae vitae dicta sunt explicabo.</p>
-                        <div className='footerIcon'>
+                        <div>
                             {/* <SearchBox /> */}
-                            <div className="search-container">
+                            <div className="search-container" style={{marginBottom:'20px'}}>
                                 <form onSubmit={handleSubmit(onSubmitclick)}>
                                     <input className='news-letter-input' type="text" placeholder="Email" id='email' onChange={onchange}/>
                                     <button type="submit" className='news-letter-button'><i className="fa fa-paper-plane"></i></button>
                                 </form>
                             </div>
                             {/* <SearchBox /> */}
+                            <h4>Questions, concerns, and compliments</h4>
+                            <p>* If you have questions, concerns, or compliments about the safety or quality of patient care, please let us know. <br/>Call to +91 9605777369 <br/>* to speak to the patient representative at M-Clinic or +91 9605888369 to reach the representative.</p>
                         </div>
                     </Col>
                 </Row>
@@ -111,10 +128,10 @@ function Footer() {
             <Container>
                 <Row className='pt-4'>
                     <Col xs={12} sm={12} lg={12} style={{textAlign:'center'}}>
-                        <p className='footerIconP'>© 2022. All rights reserved design by maverixpro</p>
+                        <p className='footerIconP'>© 2022. All rights reserved design by MaverixPro®</p>
                     </Col>
                     <Col xs={12} sm={12} lg={12} className='right'>
-                         <NavLink to={'/'} className="nav-link" style={{float:'left'}}>Company</NavLink>
+                         <NavLink to={''} onClick={movecompany} className="nav-link" style={{float:'left'}}>Company</NavLink>&nbsp;&nbsp;
                         <NavLink to={'/PrivacyPolicy'} className="nav-link" style={{float:'left'}}>Setting & Privacy</NavLink>
                     </Col>
                 </Row>

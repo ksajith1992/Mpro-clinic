@@ -10,6 +10,7 @@ import CareerTabs from './Components/CareerTabs'
 import ScrollableTabsButtonVisible from './Components/CareerTabs'
 import {useNavigate} from 'react-router-dom'
 import axios from '../Constants/Axios'
+import Footer from './Components/Footer'
 
 function Careers() {
   const navigate = useNavigate();
@@ -25,12 +26,15 @@ function Careers() {
       });
     });
     const carrerDiscription=(e)=>{
-      navigate('/CareerDetails',{state:{id:e.target.id}})
+      console.log('id',e.target.id)
+      if(e.target.id){
+        navigate('/CareerDetails',{state:{id:e.target.id}})
+      }
     }
     const [value, setValue] = React.useState(1);
     const [depart, setDepart] = useState([])
     const [data, setData] = useState([])
-    const [careers, setCareers] = useState([])
+    const [career, setCareers] = useState([])
   
     useEffect(()=>{        
       axios.get('career_list/')
@@ -57,25 +61,31 @@ function Careers() {
 'skills':''}]
   const getcareers=(er)=>{
     console.log(er,'ll')
-    if(careers.length){   
+    if(career.length){   
     }else{
       axios.get('careers/'+er+'/')
       .then(res=>{
           setCareers(res.data.data)
       })
-      .catch(err => { if(err.request){ console.log(err.request) } if(err.response){  setCareers(dats) } });
+      .catch(err => { if(err.request){ console.log(err.request) } if(err.response){ 
+          console.log(err.response,'kkk')
+          setCareers(dats)
+         } });
       }
     }
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
+    console.log(e.target.id,'jjj')
     axios.get('careers/'+e.target.id+'/')
     .then(res=>{
         setCareers(res.data.data)
     })
-    .catch(err => { if(err.request){ console.log(err.request) } if(err.response){ setCareers(dats) } });
+    .catch(err => { if(err.request){ console.log(err.request) } if(err.response){
+      console.log(err.response);
+       setCareers(dats) } });
   };
-  console.log(careers,'ooo')
+  console.log(career,'ooo')
   return (
     <div className='container-fluid m-0' id='container-fluid'>
       <Navbar/>
@@ -111,10 +121,10 @@ function Careers() {
           <div className='col-md-4'>
             <h1 className='Actv-head'>ACTIVE OPENING</h1>
             <div className='scrollDiv' id='style-3'>
-              {careers.map((obj)=>
+              {career.map((obj)=>
               <div className='job-opp'>
-                <h1 className='Desig-name'>{obj.heading}-[{obj.vacancy}]</h1>
-                <FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" id={obj.id} onClick={carrerDiscription}/><br/>
+                <h1 className='Desig-name'>{obj.heading}-{obj.heading?'['+obj.vacancy+']':''}</h1>
+                {obj.heading?<FontAwesomeIcon className='Desig-arrow' icon="fa-solid fa-arrow-right" id={obj.id} onClick={carrerDiscription}/>:''}<br/>
                 <p className='Desig-bio'><span style={{fontWeight:'bold'}}>{obj.heading?'Resposibility:-':''}</span>{obj.responsibility}</p>
                 <p className='Desig-bio'><span style={{fontWeight:'bold'}}>{obj.heading?'Skills:-':''}</span>{obj.skills}</p>
               </div>)}
@@ -128,6 +138,7 @@ function Careers() {
         <div className='d-lg-none'>
             <ScrollableTabsButtonVisible/>
         </div>
+        <Footer/>
     </div>
   )
 }

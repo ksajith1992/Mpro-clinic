@@ -13,14 +13,13 @@ import CareerDetails from './Pages/CareerDetails';
 import Otoverification from './Pages/Otoverification';
 import AboutClinic from './Pages/AboutClinic';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
-import Videoback from './Pages/Videoback';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path='/' element={<Videoback/>}/>
+          <Route exact path='/' element={<Home/>}/>
           <Route exact path='/Home' element={<Home/>}/>
           <Route exact path='/Login' element={<Login/>}/>
           <Route exact path='/OTPVerification' element={<Otoverification/>}/>
