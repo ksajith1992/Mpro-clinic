@@ -74,6 +74,7 @@ function Dashbord() {
     console.log(reps,'jhhh')
     
     useEffect(()=>{
+        window.scrollTo(0, 0);
         if(token){
             axios.get('appointment_list/',{ headers: {"Authorization" : `Bearer ${token}`} })
             .then(res=>{

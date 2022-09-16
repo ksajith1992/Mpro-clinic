@@ -34,9 +34,9 @@ function Careers() {
     const [value, setValue] = React.useState(1);
     const [depart, setDepart] = useState([])
     const [data, setData] = useState([])
-    const [career, setCareers] = useState([])
-  
-    useEffect(()=>{        
+    const [career, setCareers] = useState([])  
+    useEffect(()=>{ 
+      window.scrollTo(0, 0);       
       axios.get('career_list/')
       .then(res=>{
         console.log(res.data.data)

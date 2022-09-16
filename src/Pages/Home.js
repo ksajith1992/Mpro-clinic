@@ -231,7 +231,7 @@ function Home() {
 
                 <div className='specialization'>
                     <h1 className='spec-head'>Our specialization</h1>
-                    <h1 style={{fontSize:'45px'}}>Literally it does not mean any</h1>
+                    <h1 style={{fontSize:'45px'}}>Quality care and patient safety</h1>
                     <div className='spec-cards'>
                         <div className="card spec-card ">
                             <div className="card-body hover-zoom">
@@ -270,9 +270,8 @@ function Home() {
                 </div>
             </div>
             <div className='Doctor-area'>
-                <h1 className='doc-head'>Specialist</h1><br/>
-                <h1 className='doc-subhead'>Literally it does<br/>
-                        anything. It is a sequence </h1>
+                <h1 className='doc-head'>Experienced</h1><br/>
+                <p className='doc-subhead'> We work tirelessly to ensure you have <br/>the best possible care that you and your family deserve.</p>
                 <div className='doc-cards'>
                     <div className="card doc-card mt-2">
                         <div className="card-body ">
@@ -363,7 +362,7 @@ function Home() {
                                                 loading="lazy"
                                                 width="800"
                                                 height="500"
-                                                src="https://www.youtube.com/embed/4UZrsTqkcW4"
+                                                src="https://www.youtube.com/embed/6pgJe6TDA_s"
                                                 title="YouTube video player"
                                                 frameBorder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -397,8 +396,9 @@ function Home() {
                 <div className='book-con'>
                     <div className='row r-bor'>
                         <div className='col' style={{paddingTop:'30px'}}>
-                            <h1 className='r-bor-head1'>Literally it does not mean anything. It is a sequence</h1>
-                            <h3 className='r-bor-head2'>Literally it does not mean anything. It is a sequence of words </h3>
+                            <h1 className='r-bor-head1'>We work hard to make sure you have the highest quality care possible.</h1>
+                            <h3 className='r-bor-head2'>M-Clinic serves to help ensure and monitor the quality and safety of patient care.
+</h3>
                         </div>
                         <div className='col d-flex justify-content-center align-items-center'>
                             <NavLink to={'/'} className='bction' data-bs-toggle="modal" data-bs-target="#exampleModal">Book a consultation &nbsp;<img src={Arrow3}/></NavLink>
@@ -413,7 +413,7 @@ function Home() {
                     <div className='ms-center-head-main'>
                     <StyleRoot>
                         <div className='ms-head-main-sub'>
-                            <h1 className='ms-head-main' style={styles.fadeInUp}>Literally it <br/>does not aa</h1><br />
+                            <h1 className='ms-head-main' style={styles.fadeInUp}> We use advanced medical technology</h1><br />
                              <div style={{ textAlign: 'center'}}>
                                 <button type="button" className="btn btn-danger">For emergency</button>
                             </div>
